@@ -1,7 +1,7 @@
 # challenge
-A simple technical challenge task
+A simple technical challenge
 
-This sample application that picks a country at random and asks you to guess the capital.
+This sample application picks a country at random and asks you to guess the capital.
 
 To run this application:
 
