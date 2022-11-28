@@ -1,0 +1,32 @@
+<html>
+<head>
+   <title>Great Capital city guessing game</title>
+   
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+   <script type=text/javascript src="{{url_for('static', filename='js/main.js')}}"></script>
+</head>
+<body>
+  <h1>Welcome to the capital city guessing game!</h1>
+  <h3>What is the capital of {{ country}}</h3>
+  <p class="answer">{{ answer }} </p>
+  
+
+  {% if errors %}
+      <div class="alert alert-danger">
+	    {{ errors }}
+      </div>
+  {% endif %}
+
+ <center><form name="form1" action='/guess' method='post' onsubmit="required()">
+      Guess: <input type='text' id='guess' name='guess'>
+      <input type='submit' id='submit' value='submit'>
+  </form></center> 
+
+
+ <p> <b><a href="{{ url_for('index')}}">
+    Try again
+  </a></b>
+</p>
+
+</body>
