@@ -13,6 +13,8 @@ To run this application:
 
 * the run the application: python -m flask run
 
+* open http://127.0.0.1:5000 on your browser to test the application
+
 ## TODO
 
 Add unit tests - especially to test the external api requests.
