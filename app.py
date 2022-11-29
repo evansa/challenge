@@ -1,5 +1,5 @@
 import random 
-from flask import Flask, render_template, session, request, redirect 
+from flask import Flask, render_template, session, request, redirect, url_for
 from services import country_service
 
 app = Flask(__name__)
@@ -7,14 +7,24 @@ app.secret_key = 'thisShouldBeASecret'
 
 @app.route('/')
 def index():
-    countries_and_capitals = country_service.fetch_countries_and_capitals()
-    random.shuffle(countries_and_capitals)
     
+    countries_and_capitals = country_service.fetch_countries_and_capitals()      
+    try:
+        random.shuffle(countries_and_capitals)
+    except:
+        return redirect(url_for('error'))
+        
     country_capital = random.choice(countries_and_capitals)
+
     session['country'] = country_capital[0]
     session['capital'] = country_capital[1]
      
     return render_template("index.html", country=session['country'])
+
+@app.route('/error')
+def error():
+    return render_template("error.html") 
+
 
 @app.route('/guess', methods=['POST'])
 def result():
